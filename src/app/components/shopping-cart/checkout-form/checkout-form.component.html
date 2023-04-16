@@ -1,0 +1,104 @@
+<form
+  novalidate
+  #form="ngForm"
+  (submit)="onSubmit(form.value)"
+  class="row justify-content-md-center"
+>
+  <div class="text-start">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input
+        class="form-control"
+        placeholder="(minimun 3 characters)"
+        name="name"
+        ngModel
+        type="text"
+        id="name"
+        required
+        minlength="3"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.name?.errors?.required && form.controls.name?.touched
+        "
+      >
+        Name is required
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.name?.errors?.minlength && form.controls.name?.touched
+        "
+      >
+        At least 3 characters
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address:</label>
+      <input
+        class="form-control"
+        name="address"
+        required
+        minlength="6"
+        placeholder="(minimun 6 characters)"
+        ngModel
+        type="text"
+        id="address"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.address?.errors?.required &&
+          form.controls.address?.touched
+        "
+      >
+        Address is required
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.address?.errors?.minlength &&
+          form.controls.address?.touched
+        "
+      >
+        At least 6 characters
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="credit" class="form-label">Credit card:</label>
+      <input
+        class="form-control"
+        name="credit"
+        placeholder="(16-digit number)"
+        ngModel
+        type="text"
+        id="credit"
+        minlength="16"
+        maxlength="16"
+        required
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.credit?.errors?.required &&
+          form.controls.credit?.touched
+        "
+      >
+        Credit is required
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.credit?.errors?.minlength &&
+          form.controls.credit?.touched
+        "
+      >
+        16-digit number
+      </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid || selectedProductLength === 0" type="submit">
+      Submit
+    </button>
+  </div>
+</form>

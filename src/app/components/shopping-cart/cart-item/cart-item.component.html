@@ -1,0 +1,19 @@
+<div class="container text-center" *ngIf="product">
+  <div class="row align-items-center">
+    <div class="col-6 mb-2">
+      <img
+        [src]="product.url"
+        class="rounded w-50"
+        [alt]="product.description"
+      />
+    </div>
+    <div class="col-6 mb-2 text-start">
+      <div>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}$</p>
+      </div>
+      <input class="form-control w-50" type="number" aria-label="default input example" [ngModel]="product.quantity" (ngModelChange)="onChangeQuantity($event)">
+    </div>
+  </div>
+</div>

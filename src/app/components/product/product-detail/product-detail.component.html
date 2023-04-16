@@ -1,0 +1,25 @@
+<div class="container text-center pt-5" *ngIf="product">
+  <div class="row align-items-center">
+    <div class="col-6 mb-5">
+      <img
+        [src]="product.url"
+        class="rounded w-50"
+        [alt]="product.description"
+      />
+    </div>
+    <div class="col-6 mb-5 text-start">
+      <div>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price | currency }}</p>
+      </div>
+      <select class="form-select w-25 mb-2" aria-label="Default select example" [(ngModel)]="selectedQuantity">
+        <option *ngFor="let i of quantity" [value]="i">
+          {{ i }}
+        </option>
+      </select>
+      <button type="button" class="btn btn-primary" (click)="addToCart()">Add to cart</button>
+      <p class="text-primary mt-2" style="cursor: pointer;" (click)="backToProducts()"><i class="bi bi-arrow-left"></i> Back to product list</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container text-center">
+  <div class="row pt-5">
+    <div class="col-6 mb-5">
+      <ng-container *ngIf="selectedProduct.length === 0">
+        <h5>Add some product to cart!</h5>
+      </ng-container>
+      <ng-container *ngIf="selectedProduct.length !== 0">
+        <div *ngFor="let item of selectedProduct">
+          <app-cart-item [product]="item"></app-cart-item>
+        </div>
+        <div class="row align-items-center ms-1">
+          <h3 class="text-start ms-5">Total: {{ totalPrice | currency }}</h3>
+        </div>
+      </ng-container>
+    </div>
+    <div class="col-6 mb-5">
+      <app-checkout-form (onSubmitUserInfor)="onSubmit($event)" [selectedProductLength]="selectedProduct.length"></app-checkout-form>
+    </div>
+  </div>
+</div>
